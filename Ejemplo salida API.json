@@ -1,0 +1,124 @@
+{
+    "id": 56,
+    "url": "http://www.tvmaze.com/shows/56/chicago-pd",
+    "name": "Chicago P.D.",
+    "type": "Scripted",
+    "language": "English",
+    "genres": [
+        "Drama",
+        "Crime"
+    ],
+    "status": "Running",
+    "runtime": 60,
+    "premiered": "2014-01-08",
+    "officialSite": "http://www.nbc.com/chicago-pd",
+    "schedule": {
+        "time": "22:00",
+        "days": [
+            "Wednesday"
+        ]
+    },
+    "rating": {
+        "average": 8.4
+    },
+    "weight": 100,
+    "network": {
+        "id": 1,
+        "name": "NBC",
+        "country": {
+            "name": "United States",
+            "code": "US",
+            "timezone": "America/New_York"
+        }
+    },
+    "webChannel": null,
+    "externals": {
+        "tvrage": 35802,
+        "thetvdb": 269641,
+        "imdb": "tt2805096"
+    },
+    "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/277/693380.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/277/693380.jpg"
+    },
+    "summary": "<p>District 21 of the Chicago Police Department is made up of two distinctly different groups. There are the uniformed cops who patrol the beat and go head to head with the city's street crimes. And there's the Intelligence Unit, the team that combats the city's major offenses - organized crime, drug trafficking, high profile murders and beyond. These are their stories.</p>",
+    "updated": 1606194680,
+    "_links": {
+        "self": {
+            "href": "http://api.tvmaze.com/shows/56"
+        },
+        "previousepisode": {
+            "href": "http://api.tvmaze.com/episodes/1963556"
+        },
+        "nextepisode": {
+            "href": "http://api.tvmaze.com/episodes/1972303"
+        }
+    },
+    "_embedded": {
+        "episodes": {
+            "tvmaze": [
+                {
+                    "id": 2122,
+                    "url": "http://www.tvmaze.com/episodes/2122/chicago-pd-1x01-stepping-stone",
+                    "name": "Stepping Stone",
+                    "season": 1,
+                    "number": 1,
+                    "type": "regular",
+                    "airdate": "2014-01-08",
+                    "airtime": "22:00",
+                    "airstamp": "2014-01-09T03:00:00+00:00",
+                    "runtime": 60,
+                    "image": {
+                        "medium": "http://static.tvmaze.com/uploads/images/medium_landscape/18/45749.jpg",
+                        "original": "http://static.tvmaze.com/uploads/images/original_untouched/18/45749.jpg"
+                    },
+                    "summary": "<p>After a slew of brutal slayings, District 21, led by Sergeant Hank Voight go after a Columbian drug cartel cleaning house in Chicago. They discover D'Anthony who proves to be an asset in the investigation. At District, complicated histories and unit rivalries surface which could end up costing them one of their own. Meanwhile, Rookie Kyle Ruzek is pulled from the police academy by Olinski to join the team.</p>",
+                    "_links": {
+                        "self": {
+                            "href": "http://api.tvmaze.com/episodes/2122"
+                        }
+                    }
+                }
+            ],
+            "itunes": [
+                {
+                    "wrapperType": "track",
+                    "kind": "tv-episode",
+                    "artistId": 778095079,
+                    "collectionId": 1535844295,
+                    "trackId": 1539967648,
+                    "artistName": "Chicago PD",
+                    "collectionName": "Chicago PD, Season 8",
+                    "trackName": "Fighting Ghosts",
+                    "collectionCensoredName": "Chicago PD, Season 8",
+                    "trackCensoredName": "Fighting Ghosts",
+                    "artistViewUrl": "https://itunes.apple.com/us/tv-show/chicago-pd/id778095079?uo=4",
+                    "collectionViewUrl": "https://itunes.apple.com/us/tv-season/fighting-ghosts/id1535844295?i=1539967648&uo=4",
+                    "trackViewUrl": "https://itunes.apple.com/us/tv-season/fighting-ghosts/id1535844295?i=1539967648&uo=4",
+                    "previewUrl": "https://video-ssl.itunes.apple.com/itunes-assets/Video124/v4/b2/71/5d/b2715d8e-3e0c-cd13-cac7-88fa33d73047/mzvf_16841672726457988644.640x480.h264lc.U.p.m4v",
+                    "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6c/3f/2b/6c3f2b1f-9fae-2cdd-3eb3-b860dea06284/source/30x30bb.jpg",
+                    "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6c/3f/2b/6c3f2b1f-9fae-2cdd-3eb3-b860dea06284/source/60x60bb.jpg",
+                    "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6c/3f/2b/6c3f2b1f-9fae-2cdd-3eb3-b860dea06284/source/100x100bb.jpg",
+                    "collectionPrice": 3.98,
+                    "trackPrice": 1.99,
+                    "collectionHdPrice": 5.98,
+                    "trackHdPrice": 2.99,
+                    "releaseDate": "2020-11-11T08:00:00Z",
+                    "collectionExplicitness": "notExplicit",
+                    "trackExplicitness": "notExplicit",
+                    "discCount": 1,
+                    "discNumber": 1,
+                    "trackCount": 2,
+                    "trackNumber": 1,
+                    "trackTimeMillis": 2507040,
+                    "country": "USA",
+                    "currency": "USD",
+                    "primaryGenreName": "Drama",
+                    "contentAdvisoryRating": "TV-14",
+                    "shortDescription": "The team responds to the shooting of a 5-year-old girl and they must work the case while facing new",
+                    "longDescription": "The team responds to the shooting of a 5-year-old girl and they must work the case while facing new obstacles that come from the heightened attention on police reform. Atwater is targeted by a group of officers who want to hurt him for standing against the blue wall. Voight questions whether he's cut out for a new form of policing as he manages oversight from the CPD's deputy superintendent."
+                }
+            ]
+        }
+    }
+}
