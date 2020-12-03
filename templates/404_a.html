@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block style%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/404_a.css') }}">
+{% endblock %}
+{% block title %}Advertencia!!!{% endblock %}
+
+{% block content %}
+<!-- {% block link %}{{ url_for('index') }}{% endblock %} temporalmente deshabilitado ya que a pesar de funcionar correctamente 
+                                                          me linea me esta pintando un barra (/) en el html -->
+
+<div class="container">
+    <div class="alert alert-warning mt-4" role="alert">
+        <h4 class="alert-heading">Disculpe ocurrió un inconveniente al procesar su solicitud!</h4>
+        <p>El API no contiene informacion para el termino de busqueda: </p>
+            <em><h1> {{ nombre }} </h1></em>
+            <br> 
+            <p>Por favor, verifique verifique su trascripción.</p>
+            <p>Tambien puede intentar con otra<em>(s)</em> palabra<em>(s)</em> o frase asociada a lo que desea encontrar</p>
+        <hr>
+        <p class="mb-0">Lamentamos no poder ofrecerle esta información</p>
+    </div>
+    <br>
+    <hr>
+    <a href="javascript:history.back()" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Volver</a>
+</div>
+
+{% endblock %}

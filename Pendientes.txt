@@ -1,0 +1,39 @@
+Como soy de los que trabajo todos los días en los proyectos, es decir, los veo y siempre
+busco que cambiar, que mejorar, si veo algo lo escribo en las notas de cada proyecto y
+en cualquier momento que tenga hago los cambios. 
+También me ocurre que si en una de mis lecturas diarias veo algo aplicable igual tomo nota 
+y cuando vea la oportunidad lo agrego al proyecto, para mí la programación es como la medicina, 
+todos los días debes estar a la vanguardia pendiente de la innovación y seguir investigando.
+
+
+Algunos pendientes:
+
+- Incorporar los trailers, es decir, crearle una sección especial en aquellos ítems 
+  que tienen costo cero y no hacen match con la otra API, lo que hare es agregarles 
+  un distintivo dentro de las celdas que sirva de hiperenlace, etc.
+- Agregar mejoras al CCS. Realmente solo soy un estudioso y no un experto en hojas de 
+  estilo, pero soy de los que piensan mucho en la calidad de los datos y en el 95% de los
+  casos los vengo representando en tecnologías al estilo de Power BI.
+- En series muy viejas como es el caso de "Friends" los datos se almacenaban distinto, 
+  ya que la temporada y el capítulo se incorporaban en un solo campo; lo que se traduce 
+  en más validaciones que muestren otras variantes para cualquier otro caso. Esto es algo
+  que valido agregando un índice numérico y posterior a los tests lo devuelvo al índice
+  ideal (trackId o id) que viene de cada API, pero adicionalmente lo que me motiva a 
+  realizar ese test es la posibilidad remota de que entre dos o más API's pudieran coincidir 
+  los índices de algún ítem.
+- Verificar porque Flask no está aprovechando de representar las etiquetas html <p> en 
+  el div para el resumen. Podía haberlas limpiado, pero soy de los que prefieren ubicar
+  el inconveniente y así aprender de los errores cometidos.
+
+
+Observaciones:
+
+- El boton pdf no se muestra porque no incorpore la CDN para ello, pero esta en el codigo por si alguien modifica
+  o carga todo y lo podra utilizar
+- Por ahi se puede pensar sobre el porque no lei un JSON directo, pues la mala costumbre y la comodidad de manejar 
+  los diccionarios de Python me decantan por esa via, pero no descarto probar/intentar a futuro.
+
+
+
+  Hernan Torres
+  Maracaibo, Venezuela

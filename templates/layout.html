@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS actualizado-->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+    crossorigin="anonymous"/>
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block style%}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav id="barra" class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Proyecto API</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <!-- href={% block link %}{% endblock %} temporalmente deshabilitado ya que a pesar de funcionar correctamente 
+                                                         me linea me esta pintando un barra (/) en el html -->
+                <a class="nav-link" href="{{ url_for('index') }}"
+                  >Inicio <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+            <div id="developer">
+              <a class="alert alert-primary nav-link" href="https://www.linkedin.com/in/hernantorres23" style="text-decoration: none">Develop by: <strong><em>Hernan Torres</em></strong></a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+{% block content %}{% endblock %}
+
+{% block codigojs %}{% endblock %}
+    
+</body>
+<footer id="pie" class="container footer text-right">
+    <div class="container footer text-right">
+        &copy; Copyright 2020 by Hernan Torres Ordoñez, Maracaibo, Venezuela.<a href="https://www.linkedin.com/in/hernantorres23" class="badge badge-dark">  Web site</a>
+        {% block footer %}{% endblock %}
+    </div>
+</footer>
+
+</html>

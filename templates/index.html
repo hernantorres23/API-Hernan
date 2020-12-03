@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% block style%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">  
+{% endblock %}
+{% block title %}Hernan API's{% endblock %}
+
+{% block content %}
+
+    <div class="container rounded mx-auto">
+      <div class="col mt-2 mb-1">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title text-center">Introduccion</h1>
+            <h5 class="card-title text-center">Proyecto unificar varias API's con Flask</h5>
+            <p class="card-text">
+              En este mi ejemplo he tomado inicialmente una validación a nivel
+              de series. Basándome en pruebas de ambas API's encontré que
+              <strong><em>iTunes</em></strong> limita el resultado de las
+              consultas a un máximo 200 registros, mientras que
+              <strong><em>TVmaze</em></strong> no reflejo esa limitación; esto
+              último me presento la oportunidad de utilizar a
+              <strong><em>TVmaze</em></strong> como base para presentar los
+              datos unificados.
+            </p>
+
+            <p>
+              Para ello mi propuesta lo que hace es eliminar el diccionario que
+              trae por defecto el resultado del API tomado como base
+              <strong><em>(TVmaze)</em></strong
+              >, reconfigurarlo y luego asignar de nuevo los valores de una
+              forma más cómoda para su posterior recuperación. En el código del
+              API puede verse el detalle para pre-procesar los registros
+              recibidos de ambas API's.
+            </p>
+
+            <p>
+              En cuanto a los tiempos de respuesta considero que son adecuados
+              para el proceso considerando la cantidad de registros devueltos
+              por la consulta a dos origenes simultaneamente, sin embargo, la mejor 
+              opinión la tienen ustedes, así que critiquen todo lo que se deba, ya
+              que con eso aprendo más.
+            </p>
+
+            <p>
+              Mi intención final es trabajar en un match más preciso a nivel de
+              registro, que vaya comparando cada fila procesada dentro del
+              primer bloque de datos contra todo lo que hay en el segundo (o en
+              los que hayan), lo que permitirá ir agregando más criterios y mas
+              información por cada ítem (por ejemplo películas, protagonistas,
+              etc.).
+            </p>
+
+            <p>
+              Por ahora, y por razones de tiempo he trabajado solo un bloque
+              (series), pero ya está listo el API para procesar películas y
+              dejar unificado tal cual este <strong><em>"Endpoint"</em></strong
+              >. Sin embargo, para recuperar con una sola línea (desde el front)
+              de búsqueda y luego unificar, sin poder utilizar otros criterios
+              de los tantos recibidos me hace largo el proceso, pero la idea
+              está plasmada y la subiré a futuro.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Buscar una serie</h5>
+            <p class="card-text">
+              Mediante esta herramienta podrá encontrar los resultados
+              unificados de las API's TVMAZE y iTunes en un solo lugar.
+            </p>
+            <form
+              class="form was-validated"
+              action="{{ url_for('series') }}"
+              method="post"
+            >
+              <strong>Ingrese el termino de busqueda: </strong>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="searchbox"
+                name="search"
+                placeholder="Ejemplos: thrones, chicago pd, friends, 300, grey's anatomy"
+                required
+              />
+              <div class="form-check mb-2 mr-sm-2"></div>
+              <button type="submit" class="btn btn-dark mb-2">Consultar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

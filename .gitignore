@@ -123,3 +123,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Mis archivos de respaldo o bases
+Respaldos/
+share/
+blogs_ipynb/
+static/img/
+Notas.txt
+tribal_front_end.ipynb
+tribal_with_restful.ipynb
+
+# Mi configuracion VSCode
+.vscode/

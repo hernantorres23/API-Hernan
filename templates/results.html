@@ -1,0 +1,176 @@
+{% extends 'layout.html' %}
+{% block style%}
+    <!-- Datatables 20-nov-2020-->
+        <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/kt-2.5.3/sb-1.0.0/sp-1.2.1/r-2.2.6/datatables.min.css" />
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">  
+{% endblock %}
+{% block title %}Hernan API's{% endblock %}
+
+{% block content %}
+<!-- {% block link %}{{ url_for('index') }}{% endblock %} temporalmente deshabilitado ya que a pesar de funcionar correctamente 
+                                                          me linea me esta pintando un barra (/) en el html -->
+
+    <div class="container col">
+
+        <div class="container col mt-2">
+            <!-- La cabecera -->
+            <!-- Los tres div con la informacion principal de la serie -->
+            <div class="row mb-2">
+                <!-- El formulario de busqueda -->    
+                <div class="col-xs-12 col-sm-12 col-lg-3 col-md-4 mb-2" >
+                    <h3 class="text-center">Buscador de series</h3>
+                    <h5 class="text-center"><span class="badge badge-info">(en fase experimental)</span></h5>
+                    <hr>
+                    <p>Mediante esta herramienta podrá encontrar los resultados unificados de las API's TVMAZE y iTunes
+                        en un solo lugar</p>
+                    <form class="form-inline was-validated" action="{{ url_for('series') }}" method="post">
+                        <p><strong>Ingrese el termino de busqueda:</strong></p>
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="searchbox" name="search"
+                            placeholder="Ejemplo: thrones" required>
+                        <div class="form-check mb-2 mr-sm-2"></div>
+                        <button type="submit" class="btn btn-dark mb-2" onclick="consultando()">Consultar</button>
+                    </form>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-lg-3 col-md-4 mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title ">{{ headers["cabecera"]["nombre"] }}</h4>
+                        </div>
+                        <div id=pri-image class="col-xs-12 col-sm-12 col-lg-12 col-md-12 mb-2">
+                            <picture>
+                            <a href={{ headers["cabecera"]["weboficial"] }}>
+                                <img src={{ headers["cabecera"]["imagen"] }} class="rounded mx-auto d-block" alt={{ headers["cabecera"]["nombre"] }} />
+                            </a>
+                            </picture>
+                        </div>
+                      </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-lg-3 col-md-4 mb-2">
+                    <div id="datos-serie" style="float:left">
+                        <div id="sito-web-oficial">
+                            {% if headers["cabecera"]["weboficial"] == 'No especificado' %}
+                            <span class="badge badge-dark"><em>Sitio web oficial: </em></span><br />
+                            <a href=# style="text-decoration: none"></a> {{ headers["cabecera"]["weboficial"] }}</a>
+                            {% else %}
+                            <span class="badge badge-dark"><em>Sitio web oficial: </em></span><br>
+                            <a href={{ headers["cabecera"]["weboficial"] }}> {{ headers["cabecera"]["weboficial"] }}</a>
+                            {% endif %}
+                        </div>
+                        <hr>
+                        <div id="fecha-estreno"><span class="badge badge-dark"><em>Se estreno el: </em></span> {{ headers["cabecera"]["comenzo"] }}
+                        </div>
+                        <div id="cadena-tv"><span class="badge badge-dark"><em>Canal: </em></span> {{ headers["cabecera"]["canal"] }} -
+                                {{headers["cabecera"]["pais"]}}</div>
+                        <div id="huso-horaria"><span class="badge badge-dark"><em>Huso horario: </em></span> {{ headers["cabecera"]["husohorario"] }}</div>
+                        <div id="generos"><span class="badge badge-dark"><em>Generos: </em></span> {{ headers["cabecera"]["generos"] }}</div>
+                        <div id="status"><span class="badge badge-dark"><em>Estatus reportado: </em></span> {{ headers["cabecera"]["status"] }}</div>
+                        <div id="rating"><span class="badge badge-dark"><em>Rating: </em></span> {{ headers["cabecera"]["rating"] }}</div>
+                        <div id="tipo"><span class="badge badge-dark"><em>Tipo: </em></span> {{headers["cabecera"]["tipo"]}}</div>
+                        <div id="idioma"><span class="badge badge-dark"><em>Idioma: </em></span> {{headers["cabecera"]["idioma"]}}</div>
+                        <div id="transmision"><span class="badge badge-dark"><em>Se transmite (no actualizado en todos los casos): </em></span> {{ headers["cabecera"]["calendario"] }} - {{headers["cabecera"]["horario"]}}</div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-lg-3 col-md-4 mb-2">
+                    <div id="otros-datos-serie" style="float:left">
+                        <div id="resumen">
+                            <b>Resumen: </b> {{ headers["cabecera"]["resumen"] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <hr />
+        <br>
+        <!-- La tabla -->
+        <div class="table-responsive mt-3 mb-3 col-12" id="mydatatable-container">
+            <table class="records_list table table-striped table-bordered table-hover nowrap" style="width: 100%"
+                id="mydatatable" data-page-list="[5, 10, 15, 20, 25, 30, 35, 50, All]">
+                <div class="toolbar"></div>
+                <thead>
+                    <tr>
+                        <th id="nombre-head">Nombre capitulo</th>
+                        <!-- <th>Nombre serie</th> -->
+                        <th>Origen</th>
+                        <th>Temporada</th>
+                        <th>N° capitulo</th>
+                        <th>Precio</th>
+                        <th>Estreno</th>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th id="nombre-foot">Nombre capitulo</th>
+                        <!-- <th>Nombre serie</th>                         -->
+                        <th>Origen</th>
+                        <th>Temporada</th>
+                        <th>N° capitulo</th>
+                        <th>Precio</th>
+                        <th>Estreno</th>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for key, value in results.items() %}
+                    <tr>
+                        {% if value["origen"] == 'iTunes' %}
+                        <td>
+                            <a href={{ value["url"] }}>
+                                <img src="{{url_for('static', filename='itunes.ico')}}" align="middle"
+                                    alt="iTunes icono" height="32" width="32" />
+                            </a>{{ value["nombre"] }}
+                        </td>
+                        {% else %}
+                        <td>
+                            <a href={{ value["url"] }}>
+                                <img src="{{url_for('static', filename='tvmaze.png')}}" align="middle" alt="tvMaze icono"
+                                    height="32" width="32" />
+                            </a>{{ value["nombre"] }}
+                        </td>
+                        {% endif %}
+                        <!-- <td>{{ headers["cabecera"]["nombre"] }}</td> -->
+                        <td>{{ value["origen"] }}</td>
+                        <td>{{ value["temporada"] }}</td>
+                        <td>{{ value["capitulo"] }}</td>
+                        <td>{{ value["precio"] }}</td>
+                        <td>{{ value["estreno"] }}</td>
+                        <td>{{ value["id"] }}</td>
+                        <td>{{ value["descripcion"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+<hr />
+
+    <!-- JQuery actualizado-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS actualizado-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+
+    <!-- Datatables 20-nov-2020-->
+    <script
+        src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/kt-2.5.3/sb-1.0.0/sp-1.2.1/r-2.2.6/datatables.min.js">
+    </script>
+
+<script src="{{ url_for('static', filename='js/results.js') }}"></script>
+
+{% endblock %}

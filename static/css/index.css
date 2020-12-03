@@ -1,0 +1,17 @@
+@import url(navbar.css);
+
+body{
+    min-height: 100%;
+    top: 0;
+    margin:0;
+    padding:0;
+}
+
+#pie,
+body{
+    width: 100%;
+}
+
+#pie{
+    bottom: 0;
+}

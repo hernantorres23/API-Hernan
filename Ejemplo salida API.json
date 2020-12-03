@@ -1,3 +1,14 @@
+// $['_embedded']['episodes'].*['id']
+// $['_embedded']['episodes'][*].id
+// $['_embedded'].episodes[*]
+// $['_embedded'].episodes[?(@.id > 40879)]
+// $['_embedded'].episodes[?(@.id > 40879)].name
+// $['_embedded'].episodes[?(@.id > 40879)].*
+// $.results[?(@.trackPrice < 0)]
+// $.results[?(@.trackPrice < 0)].trackId
+// $.results[?(@.trackPrice < 0)].*
+
+
 {
     "id": 56,
     "url": "http://www.tvmaze.com/shows/56/chicago-pd",
