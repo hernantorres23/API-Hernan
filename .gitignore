@@ -126,12 +126,15 @@ dmypy.json
 
 # Mis archivos de respaldo o bases
 Respaldos/
-share/
+share/man
+share/jupyter
 blogs_ipynb/
 static/img/
 Notas.txt
 tribal_front_end.ipynb
 tribal_with_restful.ipynb
+Scripts/
 
 # Mi configuracion VSCode
 .vscode/
+.gitignore
